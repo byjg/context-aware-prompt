@@ -1,11 +1,13 @@
 find_git_branch() {
   # Based on: http://stackoverflow.com/a/13003854/170413
+  local status
   local branch
   if branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null); then
+    status=$(git status -sb | cut -d' ' -f3-4 | head -n1)
     if [[ "$branch" == "HEAD" ]]; then
       branch='detached*'
     fi
-    git_branch="($branch)"
+    git_branch="($branch$status)"
   else
     git_branch=""
   fi
@@ -18,6 +20,16 @@ find_git_dirty() {
   else
     git_dirty=''
   fi
+}
+
+find_git_sync() {
+
+  if [[ "$status" != "" ]]; then
+    git_sync="$status"
+  else
+    git_sync=''
+  fi
+
 }
 
 PROMPT_COMMAND="find_git_branch; find_git_dirty; $PROMPT_COMMAND"
