@@ -3,7 +3,7 @@ find_git_branch() {
   local status
   local branch
   if branch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null); then
-    status=$(git status -sb | cut -d' ' -f3-4 | head -n1)
+    status=$(git status -sb 2> /dev/null | cut -d' ' -f3-4 | head -n1)
     if [[ "$branch" == "HEAD" ]]; then
       branch='detached*'
     fi
