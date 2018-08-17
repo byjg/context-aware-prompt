@@ -21,17 +21,23 @@ If you `cd` to a Git working directory, you will see the current Git branch
 name displayed in your terminal prompt. When you're not in a Git working
 directory, your prompt works like normal.
 
-![Git Branch in Prompt](https://raw.github.com/jimeh/git-aware-prompt/master/preview.png)
+![Git Branch in Prompt](https://raw.github.com/byjg/git-aware-prompt/master/preview.png)
 
 
 ## Installation
+
+### The easy way:
+
+bash <(wget -qO- https://raw.githubusercontent.com/byjg/git-aware-prompt/master/install.sh)
+
+### TL;DR
 
 Clone the project to a `.bash` folder in your home directory:
 
 ```bash
 mkdir ~/.bash
 cd ~/.bash
-git clone git://github.com/jimeh/git-aware-prompt.git
+git clone git://github.com/byjg/git-aware-prompt.git
 ```
 
 Edit your `~/.bash_profile` or `~/.profile` and add the following to the top:
@@ -41,14 +47,13 @@ export GITAWAREPROMPT=~/.bash/git-aware-prompt
 source "${GITAWAREPROMPT}/main.sh"
 ```
 
-
-## Configuring
+#### Configuring
 
 Once installed, there will be new `$git_branch` and `$git_dirty` variables
 available to use in the `PS1` environment variable, along with a number of
 color helper variables which you can see a list of in [colors.sh][].
 
-[colors.sh]: https://github.com/jimeh/git-aware-prompt/blob/master/colors.sh
+[colors.sh]: https://github.com/byjg/git-aware-prompt/blob/master/colors.sh
 
 If you want to know more about how to customize your prompt, I recommend
 this article: [How to: Change / Setup bash custom prompt (PS1)][how-to]
@@ -56,7 +61,7 @@ this article: [How to: Change / Setup bash custom prompt (PS1)][how-to]
 [how-to]: http://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html
 
 
-### Suggested Prompts
+#### Suggested Prompts
 
 Below are a few suggested prompt configurations. Simply paste the code at the
 end of the same file you pasted the installation code into earlier.
@@ -112,3 +117,4 @@ page. Or if you have tips of your own, feel free to add them :)
 ## License
 
 [CC0 1.0 Universal](http://creativecommons.org/publicdomain/zero/1.0/)
+
