@@ -28,7 +28,9 @@ directory, your prompt works like normal.
 
 ### The easy way:
 
+```bash
 bash <(wget -qO- https://raw.githubusercontent.com/byjg/git-aware-prompt/master/install.sh)
+```
 
 ### TL;DR
 
