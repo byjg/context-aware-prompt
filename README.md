@@ -2,7 +2,7 @@
 
 [![Opensource ByJG](https://img.shields.io/badge/opensource-byjg-success.svg)](http://opensource.byjg.com)
 [![GitHub source](https://img.shields.io/badge/Github-source-informational?logo=github)](https://github.com/byjg/context-aware-prompt/)
-[![GitHub license](https://img.shields.io/github/license/byjg/<<PROJECT>>.svg)](https://opensource.byjg.com/opensource/licensing.html)
+[![GitHub license](https://img.shields.io/github/license/byjg/context-aware-prompt.svg)](https://opensource.byjg.com/opensource/licensing.html)
 
 ```tip
 This project is a fork from https://github.com/jimeh/git-aware-prompt/ 
