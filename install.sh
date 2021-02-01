@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 BASEDIR="$HOME/.bash"
-REPODIR="$BASEDIR/git-aware-prompt"
+REPODIR="$BASEDIR/context-aware-prompt"
 PROFILE="$HOME/.bash_profile"
 
 mkdir -p "$BASEDIR"
@@ -10,7 +10,7 @@ echo
 if [ ! -d "$REPODIR" ]
 then
     cd "$BASEDIR"
-    git clone https://github.com/byjg/git-aware-prompt.git
+    git clone https://github.com/byjg/context-aware-prompt.git
 else
     cd "$REPODIR"
     echo "Updating local copy."
@@ -18,7 +18,7 @@ else
 fi
 
 touch "$PROFILE"
-if grep -q GITAWAREPROMPT "$PROFILE"
+if grep -q CONTEXT_AWARE_PROMPT "$PROFILE"
 then
     echo
     echo Already installed on $PROFILE.
@@ -28,8 +28,8 @@ else
     echo ''  >> $PROFILE
     echo '##Start Context Aware Prompt'  >> $PROFILE
     echo "alias ls='ls --color=always'" >> $PROFILE
-    echo "export GITAWAREPROMPT=$REPODIR" >> $PROFILE
-    echo 'source $GITAWAREPROMPT/main.sh' >> $PROFILE
+    echo "export CONTEXT_AWARE_PROMPT=$REPODIR" >> $PROFILE
+    echo 'source $CONTEXT_AWARE_PROMPT/main.sh' >> $PROFILE
     echo 'export PS1_RESET="$PS1"' >> $PROFILE
     echo 'export PS1_GIT="\[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]"' >> $PROFILE
     echo 'export PS1_K8S="\[$txtylw\]\$k8s_config\[$txtrst\]"' >> $PROFILE

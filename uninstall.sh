@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 BASEDIR="$HOME/.bash"
-REPODIR="$BASEDIR/git-aware-prompt"
+REPODIR="$BASEDIR/context-aware-prompt"
 PROFILE="$HOME/.bash_profile"
 
 if [[ ! -f $PROFILE ]]; then

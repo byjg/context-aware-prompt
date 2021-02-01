@@ -1,2 +1,2 @@
-source "${GITAWAREPROMPT}/colors.sh"
-source "${GITAWAREPROMPT}/prompt.sh"
+source "${CONTEXT_AWARE_PROMPT}/colors.sh"
+source "${CONTEXT_AWARE_PROMPT}/prompt.sh"

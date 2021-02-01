@@ -41,26 +41,26 @@ directory, your prompt works like normal.
 
 The same if you have a KUBECONFIG environment variable set or a file `~/.kube/config`/
 
-![Git Branch in Prompt](https://raw.github.com/byjg/git-aware-prompt/master/preview.png)
+![Git Branch in Prompt](https://raw.github.com/byjg/context-aware-prompt/master/preview.png)
 
 ## Installation
 
 ### TL;DR
 
 ```bash
-wget -qO- https://raw.githubusercontent.com/byjg/git-aware-prompt/master/install.sh | bash
+wget -qO- https://raw.githubusercontent.com/byjg/context-aware-prompt/master/install.sh | bash
 ```
 
 If you want to install only `git` or only `k8s` context prompts just call:
 
 ```bash
-wget -qO- https://raw.githubusercontent.com/byjg/git-aware-prompt/master/install.sh | bash -s git
+wget -qO- https://raw.githubusercontent.com/byjg/context-aware-prompt/master/install.sh | bash -s git
 ```
 
 or
 
 ```bash
-wget -qO- https://raw.githubusercontent.com/byjg/git-aware-prompt/master/install.sh | bash -s k8s
+wget -qO- https://raw.githubusercontent.com/byjg/context-aware-prompt/master/install.sh | bash -s k8s
 ```
 
 
@@ -71,21 +71,21 @@ Clone the project to a `.bash` folder in your home directory:
 ```bash
 mkdir ~/.bash
 cd ~/.bash
-git clone git://github.com/byjg/git-aware-prompt.git
+git clone git://github.com/byjg/context-aware-prompt.git
 ```
 
 Edit your `~/.bash_profile` or `~/.profile` and add the following to the top:
 
 ```bash
-export GITAWAREPROMPT=~/.bash/git-aware-prompt
-source "${GITAWAREPROMPT}/main.sh"
+export CONTEXT_AWARE_PROMPT=~/.bash/context-aware-prompt
+source "${CONTEXT_AWARE_PROMPT}/main.sh"
 ```
 
 Once installed, there will be new `$git_branch`, `$git_dirty` and `k8s_config` variables
 available to use in the `PS1` environment variable, along with a number of
 color helper variables which you can see a list of in [colors.sh][].
 
-[colors.sh]: https://github.com/byjg/git-aware-prompt/blob/master/colors.sh
+[colors.sh]: https://github.com/byjg/context-aware-prompt/blob/master/colors.sh
 
 If you want to know more about how to customize your prompt, I recommend
 this article: [How to: Change / Setup bash custom prompt (PS1)][how-to]
@@ -131,10 +131,10 @@ export PS1="\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]
 ## Updating
 
 Assuming you followed the default installation instructions and cloned this
-repo to `~/.bash/git-aware-prompt`:
+repo to `~/.bash/context-aware-prompt`:
 
 ```bash
-cd ~/.bash/git-aware-prompt
+cd ~/.bash/context-aware-prompt
 git pull
 ```
 
@@ -145,10 +145,10 @@ with the new configuration:
 
 ```bash
 # Uninstall
-~/.bash/git-aware-prompt/uninstall.sh
+~/.bash/context-aware-prompt/uninstall.sh
 
 # Add new configuration
-~/.bash/git-aware-prompt/install.sh [git|k8s|all]
+~/.bash/context-aware-prompt/install.sh [git|k8s|all]
 ```
 
 
