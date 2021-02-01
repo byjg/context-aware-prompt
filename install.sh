@@ -30,7 +30,7 @@ else
     echo "alias ls='ls --color=always'" >> $PROFILE
     echo "export GITAWAREPROMPT=$REPODIR" >> $PROFILE
     echo 'source $GITAWAREPROMPT/main.sh' >> $PROFILE
-    echo 'export PS1="\u@\h \w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "' >> $PROFILE
+    echo 'export PS1="\u@\h \w \[$txtylw\]\$k8s_config\[$txtrst\]\[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "' >> $PROFILE
     echo '# \-- Bash Git: End'  >> $PROFILE
 fi
 echo

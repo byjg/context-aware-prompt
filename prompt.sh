@@ -22,17 +22,33 @@ find_git_dirty() {
   fi
 }
 
-find_git_sync() {
-
-  if [[ "$status" != "" ]]; then
-    git_sync="$status"
-  else
-    git_sync=''
+execute_python() {
+  local python=$(command -v python3 || command -v python)
+  local workdir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+  if [[ "$python" == "" ]]; then
+    return
   fi
 
+  $python $workdir/$1 $2 2> /dev/null
 }
 
-PROMPT_COMMAND="find_git_branch; find_git_dirty; $PROMPT_COMMAND"
+find_kube_config() {
+  local kube
+  if [[ -n "$KUBECONFIG" ]]; then
+    kube=$KUBECONFIG
+  elif [[ -f $HOME/.kube/config ]]; then
+    kube=$HOME/.kube/config
+  else
+    kube=""
+  fi
+  if [[ "$kube" == "" ]]; then
+    k8s_config=""
+  else
+    k8s_config=$(execute_python parse_kubeconfig.py $kube)
+  fi
+}
+
+PROMPT_COMMAND="find_git_branch; find_git_dirty; find_kube_config; $PROMPT_COMMAND"
 
 # Default Git enabled prompt with dirty state
 # export PS1="\u@\h \w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
