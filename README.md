@@ -1,5 +1,9 @@
 # Context Aware Prompt
 
+[![Opensource ByJG](https://img.shields.io/badge/opensource-byjg-success.svg)](http://opensource.byjg.com)
+[![GitHub source](https://img.shields.io/badge/Github-source-informational?logo=github)](https://github.com/byjg/context-aware-prompt/)
+[![GitHub license](https://img.shields.io/github/license/byjg/<<PROJECT>>.svg)](https://opensource.byjg.com/opensource/licensing.html)
+
 ```tip
 This project is a fork from https://github.com/jimeh/git-aware-prompt/ 
 initialy focused only in the Git context. 
@@ -23,7 +27,7 @@ install/configure solution.
 [3]: http://techblog.floorplanner.com/2008/12/14/working-with-git-branches/
 [4]: http://www.intridea.com/2009/2/2/git-status-in-your-prompt
 
-## Contexts Available
+## Contexts Prompts Available
 
 - Current Git Branch
 - Current Working Directory has changes or is ahead or behind the server
@@ -44,8 +48,21 @@ The same if you have a KUBECONFIG environment variable set or a file `~/.kube/co
 ### TL;DR
 
 ```bash
-bash <(wget -qO- https://raw.githubusercontent.com/byjg/git-aware-prompt/master/install.sh)
+wget -qO- https://raw.githubusercontent.com/byjg/git-aware-prompt/master/install.sh | bash
 ```
+
+If you want to install only `git` or only `k8s` context prompts just call:
+
+```bash
+wget -qO- https://raw.githubusercontent.com/byjg/git-aware-prompt/master/install.sh | bash -s git
+```
+
+or
+
+```bash
+wget -qO- https://raw.githubusercontent.com/byjg/git-aware-prompt/master/install.sh | bash -s k8s
+```
+
 
 ### Detailed instructions
 
@@ -64,8 +81,6 @@ export GITAWAREPROMPT=~/.bash/git-aware-prompt
 source "${GITAWAREPROMPT}/main.sh"
 ```
 
-#### Configuring
-
 Once installed, there will be new `$git_branch`, `$git_dirty` and `k8s_config` variables
 available to use in the `PS1` environment variable, along with a number of
 color helper variables which you can see a list of in [colors.sh][].
@@ -78,7 +93,7 @@ this article: [How to: Change / Setup bash custom prompt (PS1)][how-to]
 [how-to]: http://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html
 
 
-#### Suggested Prompts
+### Suggested Prompts
 
 Below are a few suggested prompt configurations. Simply paste the code at the
 end of the same file you pasted the installation code into earlier.
@@ -123,7 +138,23 @@ cd ~/.bash/git-aware-prompt
 git pull
 ```
 
+## Reconfigure / Uninstall
+
+If you installed using the `install.sh` you can remove the configuration and call the `install` 
+with the new configuration:
+
+```bash
+# Uninstall
+~/.bash/git-aware-prompt/uninstall.sh
+
+# Add new configuration
+~/.bash/git-aware-prompt/install.sh [git|k8s|all]
+```
+
+
 ## License
 
 [CC0 1.0 Universal](http://creativecommons.org/publicdomain/zero/1.0/)
 
+----
+[Open source ByJG](http://opensource.byjg.com)

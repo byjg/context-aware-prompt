@@ -26,7 +26,7 @@ else
     echo
     echo Installing to $PROFILE
     echo ''  >> $PROFILE
-    echo '# /-- Context Aware Prompt: Start'  >> $PROFILE
+    echo '##Start Context Aware Prompt'  >> $PROFILE
     echo "alias ls='ls --color=always'" >> $PROFILE
     echo "export GITAWAREPROMPT=$REPODIR" >> $PROFILE
     echo 'source $GITAWAREPROMPT/main.sh' >> $PROFILE
@@ -34,8 +34,14 @@ else
     echo 'export PS1_GIT="\[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]"' >> $PROFILE
     echo 'export PS1_K8S="\[$txtylw\]\$k8s_config\[$txtrst\]"' >> $PROFILE
     echo 'export PS1_ALL="$PS1_K8S$PS1_GIT"' >> $PROFILE
-    echo 'export PS1="\u@\h \w $PS1_ALL\$ "' >> $PROFILE
-    echo '# \-- Context Aware Prompt: End' >> $PROFILE
+    if [[ "$1" == "git" ]]; then
+      echo 'export PS1="\u@\h \w $PS1_GIT\$ "' >> $PROFILE
+    elif [[ "$1" == "k8s" ]]; then
+      echo 'export PS1="\u@\h \w $PS1_K8S\$ "' >> $PROFILE
+    else
+      echo 'export PS1="\u@\h \w $PS1_ALL\$ "' >> $PROFILE
+    fi
+    echo '##End Context Aware Prompt' >> $PROFILE
     echo ''  >> $PROFILE
 fi
 echo
