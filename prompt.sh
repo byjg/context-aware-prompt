@@ -1,3 +1,9 @@
+context_caller() {
+  find_git_branch
+  find_git_dirty
+  find_kube_config
+}
+
 find_git_branch() {
   # Based on: http://stackoverflow.com/a/13003854/170413
   local status
@@ -7,18 +13,18 @@ find_git_branch() {
     if [[ "$branch" == "HEAD" ]]; then
       branch='detached*'
     fi
-    git_branch="($branch$status)"
+    context_git_branch="($branch$status)"
   else
-    git_branch=""
+    context_git_branch=""
   fi
 }
 
 find_git_dirty() {
   local status=$(git status --porcelain 2> /dev/null)
   if [[ "$status" != "" ]]; then
-    git_dirty='*'
+    context_git_dirty='*'
   else
-    git_dirty=''
+    context_git_dirty=''
   fi
 }
 
@@ -32,23 +38,12 @@ execute_python() {
   $python $workdir/$1 $2 2> /dev/null
 }
 
+
 find_kube_config() {
-  local kube
-  if [[ -n "$KUBECONFIG" ]]; then
-    kube=$KUBECONFIG
-  elif [[ -f $HOME/.kube/config ]]; then
-    kube=$HOME/.kube/config
-  else
-    kube=""
-  fi
-  if [[ "$kube" == "" ]]; then
-    k8s_config=""
-  else
-    k8s_config=$(execute_python parse_kubeconfig.py $kube)
-  fi
+  context_k8s=$(execute_python parse_kubeconfig.py)
 }
 
-PROMPT_COMMAND="find_git_branch; find_git_dirty; find_kube_config; $PROMPT_COMMAND"
+PROMPT_COMMAND="context_caller; $PROMPT_COMMAND"
 
 # Default Git enabled prompt with dirty state
 # export PS1="\u@\h \w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "

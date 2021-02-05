@@ -51,19 +51,6 @@ The same if you have a KUBECONFIG environment variable set or a file `~/.kube/co
 wget -qO- https://raw.githubusercontent.com/byjg/context-aware-prompt/master/install.sh | bash
 ```
 
-If you want to install only `git` or only `k8s` context prompts just call:
-
-```bash
-wget -qO- https://raw.githubusercontent.com/byjg/context-aware-prompt/master/install.sh | bash -s git
-```
-
-or
-
-```bash
-wget -qO- https://raw.githubusercontent.com/byjg/context-aware-prompt/master/install.sh | bash -s k8s
-```
-
-
 ### Detailed instructions
 
 Clone the project to a `.bash` folder in your home directory:
@@ -81,7 +68,7 @@ export CONTEXT_AWARE_PROMPT=~/.bash/context-aware-prompt
 source "${CONTEXT_AWARE_PROMPT}/main.sh"
 ```
 
-Once installed, there will be new `$git_branch`, `$git_dirty` and `k8s_config` variables
+Once installed, there will be new `$context_git_branch`, `$context_git_dirty` and `context_k8s` variables
 available to use in the `PS1` environment variable, along with a number of
 color helper variables which you can see a list of in [colors.sh][].
 
@@ -102,7 +89,7 @@ end of the same file you pasted the installation code into earlier.
 #### Mac OS X
 
 ```bash
-export PS1="\u@\h \w \[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
+export PS1="\u@\h \w \[$txtcyn\]\$context_git_branch\[$txtred\]\$context_git_dirty\[$txtrst\]\$ "
 ```
 
 Optionally, if you want a nice pretty prompt when using `sudo -s`, also add
@@ -118,13 +105,13 @@ export SUDO_PS1="\[$bakred\]\u@\h\[$txtrst\] \w\$ "
 Standard:
 
 ```bash
-export PS1="\${debian_chroot:+(\$debian_chroot)}\u@\h:\w \[$txtylw\]\$k8s_config\[$txtrst\]\[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
+export PS1="\${debian_chroot:+(\$debian_chroot)}\u@\h:\w \[$txtylw\]\$context_k8s\[$txtrst\]\[$txtcyn\]\$context_git_branch\[$txtred\]\$context_git_dirty\[$txtrst\]\$ "
 ```
 
 Colorized:
 
 ```bash
-export PS1="\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \[$txtylw\]\$k8s_config\[$txtrst\]\[$txtcyn\]\$git_branch\[$txtred\]\$git_dirty\[$txtrst\]\$ "
+export PS1="\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \[$txtylw\]\$context_k8s\[$txtrst\]\[$txtcyn\]\$context_git_branch\[$txtred\]\$context_git_dirty\[$txtrst\]\$ "
 ```
 
 
