@@ -68,7 +68,7 @@ export CONTEXT_AWARE_PROMPT=~/.bash/context-aware-prompt
 source "${CONTEXT_AWARE_PROMPT}/main.sh"
 ```
 
-Once installed, there will be new `$context_git_branch`, `$context_git_dirty` and `context_k8s` variables
+Once installed, there will be new `$context_git_branch`, `$context_git_dirty` and `$context_k8s` variables
 available to use in the `PS1` environment variable, along with a number of
 color helper variables which you can see a list of in [colors.sh][].
 
@@ -80,40 +80,43 @@ this article: [How to: Change / Setup bash custom prompt (PS1)][how-to]
 [how-to]: http://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html
 
 
-### Suggested Prompts
+### Customize Prompts
 
-Below are a few suggested prompt configurations. Simply paste the code at the
-end of the same file you pasted the installation code into earlier.
+You can customize your prompt by editing the `~/.bash_profile`  file and changing the `PS1` entry.
 
+You can use the pre-set colors to help you by using the combination below:
 
-#### Mac OS X
+prefix:
+
+| Prefix | Description     |
+|--------|-----------------|
+| txt    | Text color      |
+| bld    | Text in bold    |
+| und    | Underline       |
+| bak    | Bakground color |
+
+suffix:
+
+| Suffix | Color   |
+|--------|---------|
+| blk    | Black   |
+| red    | Red     |
+| grn    | Green   |
+| ylw    | Yellow  |
+| blu    | Blue    |
+| pur    | Purple  |
+| cyn    | Cyan    |
+| wht    | White   |
+
+Example: `$txtred` or `$bakgrn`
+
+The variables `$context_git_branch`, `$context_git_dirty` and `$context_k8s` will have the current context. 
+
+You need to escape these variables before set into PS1.
 
 ```bash
 export PS1="\u@\h \w \[$txtcyn\]\$context_git_branch\[$txtred\]\$context_git_dirty\[$txtrst\]\$ "
 ```
-
-Optionally, if you want a nice pretty prompt when using `sudo -s`, also add
-this line:
-
-```bash
-export SUDO_PS1="\[$bakred\]\u@\h\[$txtrst\] \w\$ "
-```
-
-
-#### Ubuntu
-
-Standard:
-
-```bash
-export PS1="\${debian_chroot:+(\$debian_chroot)}\u@\h:\w \[$txtylw\]\$context_k8s\[$txtrst\]\[$txtcyn\]\$context_git_branch\[$txtred\]\$context_git_dirty\[$txtrst\]\$ "
-```
-
-Colorized:
-
-```bash
-export PS1="\${debian_chroot:+(\$debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\] \[$txtylw\]\$context_k8s\[$txtrst\]\[$txtcyn\]\$context_git_branch\[$txtred\]\$context_git_dirty\[$txtrst\]\$ "
-```
-
 
 ## Updating
 
@@ -125,17 +128,13 @@ cd ~/.bash/context-aware-prompt
 git pull
 ```
 
-## Reconfigure / Uninstall
+## Uninstall
 
-If you installed using the `install.sh` you can remove the configuration and call the `install` 
-with the new configuration:
+If you installed using the installation script `install.sh` you can remove the configuration with:
 
 ```bash
 # Uninstall
 ~/.bash/context-aware-prompt/uninstall.sh
-
-# Add new configuration
-~/.bash/context-aware-prompt/install.sh [git|k8s|all]
 ```
 
 
